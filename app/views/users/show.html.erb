@@ -1,0 +1,7 @@
+<h1 class='title'><%= @user.email %></h1>
+<h2>Articles contributed to</h2>
+<ul>
+    <% @user.articles.uniq.each do |article| %>
+    <li><%= link_to article.title, article_path(article) %></li>
+    <% end %>
+</ul>

@@ -25,9 +25,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      if user_signed_in?
-        @article.users << current_user
-      end
+      @article.users << current_user if user_signed_in?
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new
@@ -37,9 +35,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      if user_signed_in?
-        @article.users << current_user
-      end
+      @article.users << current_user if user_signed_in?
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -53,13 +49,14 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def article_params
-      params.require(:article).permit(:title, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def article_params
+    params.require(:article).permit(:title, :body)
+  end
 end

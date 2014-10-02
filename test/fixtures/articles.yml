@@ -1,9 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+first:
+  title: Batman is awesome
+  body: I'm Batman!
 
-one:
-  title: MyString
-  body: MyString
+second:
+  title: Catwoman
+  body: Catwoman says meow
 
-two:
-  title: MyString
-  body: MyString
+third:
+  title: The Batmobile
+  body: The batmobile goes vroom

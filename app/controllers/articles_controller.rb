@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    @article = Article.find(params[:id])
   end
 
   # GET /articles/new
@@ -24,6 +25,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      @article.users << current_user if user_signed_in?
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new
@@ -33,6 +35,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
+      @article.users << current_user if user_signed_in?
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit

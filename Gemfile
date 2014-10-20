@@ -9,5 +9,13 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'rubocop'
 gem 'devise'
+gem 'faker'
+gem 'fabrication'
+gem 'minitest-rails'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
+
+group :test do
+  gem 'minitest-rails-capybara'
+  gem 'launchy'
+end
